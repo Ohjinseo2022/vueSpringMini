@@ -15,14 +15,21 @@
     <br />
     <hr />
     <div>
-      <div class="contents" v-if="!state.update">
-        {{ state.tempData.contents }}
+      <div v-if="!state.update">
+        <textarea
+          class="contents"
+          readonly="true"
+          v-text="state.tempData.contents"
+        />
       </div>
-      <textarea
-        class="contents"
-        v-model="state.content.contents"
-        v-if="state.update"
-      /><br />
+      <div>
+        <textarea
+          class="contents"
+          v-model="state.content.contents"
+          v-if="state.update"
+        />
+      </div>
+      <br />
       <div class="btn">
         <button v-if="!state.update" @click="putcon(state.content.userIdx)">
           수정
@@ -49,7 +56,7 @@ export default {
   components: {},
   data() {
     return {
-      content_idx: 0
+      tempCon: ''
     }
   },
   setup() {
@@ -76,6 +83,7 @@ export default {
     axios.get(`/api/detail/content/${idx}`).then((res) => {
       state.content = res.data
       state.tempData = state.content
+      console.log('현재 temp 정보' + state.tempData.contents)
     })
     const putcon = (userIdx) => {
       if (userIdx === store.state.account.id) {
@@ -101,6 +109,7 @@ export default {
     }
     const cancell = () => {
       state.update = !state.update
+      router.go(0)
     }
     const deletContents = (idx) => {
       // 기본은 삭제 버튼 비활성화 시켜야함
