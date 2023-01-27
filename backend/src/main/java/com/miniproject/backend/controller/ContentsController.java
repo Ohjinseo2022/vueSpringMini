@@ -30,7 +30,7 @@ public class ContentsController {
 
     // 전체 게시글 확인용도
     @GetMapping("/api/contents/all")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity getContents(){
         List<Contents> contents = contentsRepository.findAll();
 
@@ -39,7 +39,7 @@ public class ContentsController {
 
     //작성자의 이름 추출해주는 로직
     @GetMapping("/api/contents/name")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity searchUserName(){
         List<Contents> contents = contentsRepository.findAll();
         ArrayList<String> userName = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ContentsController {
 
     // 새로운 글 작성
     @PostMapping("/api/addContents")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity addContents(@RequestBody ContentsDto dto,
                                       @CookieValue(value = "token", required = false) String token){
         if (!jwtService.isValid(token)) {
@@ -79,7 +79,7 @@ public class ContentsController {
     }
     // 게시글 상세보기
     @GetMapping("/api/detail/content/{idx}")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity detailPage(@PathVariable("idx") int idx){
         try{
             Contents content =contentsRepository.findByIdx(idx);
@@ -91,7 +91,7 @@ public class ContentsController {
     }
     // 게시글 삭제
     @DeleteMapping("/api/content/delete/{idx}")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity removeContent(@PathVariable("idx")int idx,
                                         @CookieValue(value="token",required = false)String token){
         if (!jwtService.isValid(token)) {
@@ -111,7 +111,7 @@ public class ContentsController {
 
     // 게시글 수정
     @PutMapping("api/content/update")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity updateContent(@RequestBody ContentsDto dto,@CookieValue(value="token",required = false)String token){
         if (!jwtService.isValid(token)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);

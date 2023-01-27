@@ -9,12 +9,12 @@ const routes = [
     component: MainView
   },
   {
-    path: '/login',
+    path: '/Web/login',
     name: 'Login',
     component: LoginView
   },
   {
-    path: '/sign',
+    path: '/Web/sign',
     name: 'Sign',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -23,7 +23,7 @@ const routes = [
       import(/* webpackChunkName: "sign" */ '../views/SignView.vue')
   },
   {
-    path: '/detail',
+    path: '/Web/detail',
     name: 'Detail',
 
     // route level code-splitting
@@ -34,7 +34,7 @@ const routes = [
     props: true
   },
   {
-    path: '/Create',
+    path: '/Web/Create',
     name: 'Create',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
