@@ -24,7 +24,7 @@ public class NewUserSignController {
     JwtService jwtService;
 
     @PostMapping("api/signup")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity pushUser(@RequestBody UserDto dto, HttpServletResponse res){
 
         String tokenPassword = jwtService.getToken("password",dto.getPassword());

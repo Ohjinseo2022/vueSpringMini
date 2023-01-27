@@ -29,7 +29,7 @@ public class LoginController {
 
 
     @PostMapping("/api/login")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity login(@RequestBody Map<String,String> params, HttpServletResponse res){
 
         NewUser user =  newUserRepository.findById(params.get("id"));
@@ -64,7 +64,7 @@ public class LoginController {
 
 
     @GetMapping("/api/login/check")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity check(@CookieValue(value ="token",required = false) String token){
         Claims claims = jwtService.getClaims(token);
         if(claims != null){
@@ -74,7 +74,7 @@ public class LoginController {
         return new ResponseEntity<>(null,HttpStatus.OK);
     }
     @GetMapping("/api/login/findName")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity findName(@CookieValue(value="token",required = false) String token){
         if(!jwtService.isValid(token)){
             return new ResponseEntity<>(null,HttpStatus.OK); // 토큰 정보가 없어도 오류는 아님 !
@@ -88,7 +88,7 @@ public class LoginController {
     }
 
     @PostMapping("/api/logout")
-    @CrossOrigin(origins = "http://localhost:3000/")
+//    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity logout(HttpServletResponse res){
         Cookie cookie = new Cookie("token",null);
 
